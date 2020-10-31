@@ -11,16 +11,18 @@ class MyApp extends StatelessWidget {
       title: 'Photo Manager Demo',
       home: Material(
         child: Center(
-          child: Builder(builder: (context) {
-            return RaisedButton(
-              onPressed: () {
-                Navigator.of(context).push(
-                  MaterialPageRoute(builder: (_) => Gallery()),
-                );
-              },
-              child: Text('Open Gallery'),
-            );
-          }),
+          child: Builder(
+            builder: (context) {
+              return RaisedButton(
+                onPressed: () async {
+                  Navigator.of(context).push(
+                    MaterialPageRoute(builder: (_) => Gallery()),
+                  );
+                },
+                child: Text('Open Gallery'),
+              );
+            },
+          ),
         ),
       ),
     );
