@@ -194,6 +194,12 @@ class _VideoScreenState extends State<VideoScreen> {
     super.initState();
   }
 
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
   _initVideo() async {
     final video = await widget.videoFile;
     _controller = VideoPlayerController.file(video)
