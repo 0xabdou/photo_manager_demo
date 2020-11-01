@@ -103,7 +103,30 @@ class AssetThumbnail extends StatelessWidget {
         // If we have no data, display a spinner
         if (bytes == null) return CircularProgressIndicator();
         // If there's data, display it as an image
-        return InkWell(child: Image.memory(bytes, fit: BoxFit.cover),);
+        return InkWell(
+          onTap: () {
+            // TODO: navigate to Image/Video screen
+          },
+          child: Stack(
+            children: [
+              // Wrap the image in a Positioned.fill to fill the space
+              Positioned.fill(
+                child: Image.memory(bytes, fit: BoxFit.cover),
+              ),
+              // Display a Play icon if the asset is a video
+              if (asset.type == AssetType.video)
+                Center(
+                  child: Container(
+                    color: Colors.blue,
+                    child: Icon(
+                      Icons.play_arrow,
+                      color: Colors.white,
+                    ),
+                  ),
+                ),
+            ],
+          ),
+        );
       },
     );
   }
